@@ -4,12 +4,12 @@
             [clojure.string :as s]))
 
 (defn parse-record [s]
-  (apply hash-map (s/split s #"[: \r\n]+")))
+  (apply hash-map (s/split s #"[: \r?\n]+")))
 
 (defn read-part1-input []
   (->> (io/resource "2020/day04-part1-input.txt")
        slurp
-       (#(s/split % #"(\r\n){2,}"))
+       (#(s/split % #"(\r?\n){2,}"))
        (map parse-record)))
 
 (defn year-validation-fn [min-year max-year s]

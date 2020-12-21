@@ -5,7 +5,7 @@
 (defn get-part1-input []
   (->> (io/resource "2020/day03-part1-input.txt")
        slurp
-       (#(s/split % #"\r\n"))))
+       s/split-lines))
 
 (defn trees-in-direction [tree-grid dir-vector]
   (let [height (count tree-grid)

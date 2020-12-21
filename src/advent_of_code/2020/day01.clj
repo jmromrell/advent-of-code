@@ -6,7 +6,7 @@
 (defn read-part1-input []
   (->> (io/resource "2020/day01-part1-input.txt")
        slurp
-       (#(s/split % #"\r\n"))
+       s/split-lines
        (map #(Long/parseLong %))))
 
 (defn part1 []

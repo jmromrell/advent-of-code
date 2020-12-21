@@ -9,7 +9,7 @@
 (defn get-part1-input []
   (->> (io/resource "2020/day02-part1-input.txt")
        slurp
-       (#(s/split % #"\r\n"))
+       s/split-lines
        (map normalize-input-line)))
 
 (defn part1 []
