@@ -2,11 +2,12 @@
   (:require [clojure.java.io :as io]
             [clojure.string :as s]))
 
-(def command->state-transition-fn {"jmp" (fn [state param] (update state :head + param))
-                  "acc"                  (fn [state param] (-> state
-                                             (update :acc + param)
-                                             (update :head inc)))
-                  "nop"                  (fn [state _] (update state :head inc))})
+(def command->state-transition-fn
+  {"jmp" (fn [state param] (update state :head + param))
+   "acc" (fn [state param] (-> state
+                               (update :acc + param)
+                               (update :head inc)))
+   "nop" (fn [state _] (update state :head inc))})
 
 (defn parse-state-machine-fn [s]
   (let [[command param-str] (s/split s #" ")
